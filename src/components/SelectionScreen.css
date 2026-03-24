@@ -1,0 +1,202 @@
+/* ─── Selection Screen ──────────────────────── */
+.selection-screen {
+  animation: fadeSlideUp 300ms ease both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Header ────────────────────────────────── */
+.selection-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.deck-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+  background: var(--surface);
+  border: 1px solid var(--border-2);
+  border-radius: var(--radius);
+  padding: 8px 16px;
+  flex-shrink: 0;
+}
+
+.deck-count-num {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent-2);
+  line-height: 1;
+}
+
+.deck-count-sep {
+  font-size: 1.2rem;
+  color: var(--text-dim);
+  margin: 0 2px;
+}
+
+.deck-count-total {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ─── Progress bar ──────────────────────────── */
+.deck-progress {
+  height: 4px;
+  background: var(--surface-2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.deck-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  border-radius: 2px;
+  transition: width 300ms ease;
+}
+
+/* ─── Deck chip preview ─────────────────────── */
+.deck-preview {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.deck-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 6px 6px;
+  background: var(--surface-2);
+  border: 1px solid var(--border-2);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all var(--transition);
+  color: var(--text);
+  font-size: 0.82rem;
+  font-weight: 500;
+}
+
+.deck-chip:hover {
+  border-color: var(--red);
+  background: rgba(239,68,68,0.12);
+}
+
+.deck-chip:hover .chip-remove {
+  color: var(--red);
+}
+
+.deck-chip-img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: top center;
+  flex-shrink: 0;
+}
+
+.deck-chip-placeholder {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--text-dim);
+}
+
+.deck-chip-placeholder svg { width: 16px; height: 16px; }
+
+.chip-remove {
+  width: 14px;
+  height: 14px;
+  color: var(--text-dim);
+  transition: color var(--transition);
+  flex-shrink: 0;
+}
+
+.deck-chip-empty {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-style: dashed;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: default;
+  opacity: 0.5;
+}
+
+.deck-chip-empty svg { width: 20px; height: 20px; color: var(--text-dim); }
+.deck-chip-empty:hover { border-color: var(--border-2); background: var(--surface-2); }
+
+/* ─── Celebrity Grid ────────────────────────── */
+.celeb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+  padding-bottom: 40px;
+}
+
+.celeb-card.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.celeb-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3);
+}
+
+
+/* ─── Responsive ────────────────────────────── */
+@media (max-width: 768px) {
+  .celeb-grid {
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 10px;
+  }
+
+  .selection-header {
+    flex-direction: column;
+  }
+
+  .deck-counter {
+    align-self: flex-start;
+  }
+
+  .header-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .celeb-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+}
